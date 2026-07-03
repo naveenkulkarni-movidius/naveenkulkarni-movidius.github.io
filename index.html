@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ============================================================
+     EDIT ME: page title (shows in the browser tab & Google)
+     ============================================================ -->
+<title>Jordan Ellis — Product Designer</title>
+<meta name="description" content="Jordan Ellis — product designer working on tools for writers and independent makers.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:      #EFE7D8;  /* aged manila ground */
+    --paper-deep: #E6DBC7;  /* slightly deeper panel */
+    --ink:        #2B2622;  /* warm near-black */
+    --muted:      #6E655A;  /* taupe, secondary text */
+    --accent:     #7C2D2D;  /* oxblood */
+    --line:       #D6CBB6;  /* hairline rule */
+    --maxw:       860px;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Newsreader", Georgia, serif;
+    font-size:19px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  a{ color:var(--accent); text-decoration:none; }
+
+  ::selection{ background:var(--accent); color:var(--paper); }
+
+  /* keyboard focus — visible for everyone tabbing through */
+  a:focus-visible,
+  .nav-link:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 28px; }
+
+  /* mono utility label used for eyebrows, dates, credits */
+  .label{
+    font-family:"Space Mono", monospace;
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:10;
+    background:rgba(239,231,216,0.86);
+    backdrop-filter:saturate(1.1) blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:56px;
+  }
+  .topbar .mark{
+    font-family:"Fraunces", serif; font-weight:900;
+    font-size:17px; letter-spacing:0.01em;
+  }
+  .nav{ display:flex; gap:26px; }
+  .nav-link{
+    font-family:"Space Mono", monospace;
+    font-size:12px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--muted); padding:2px 0; position:relative;
+  }
+  .nav-link::after{
+    content:""; position:absolute; left:0; bottom:-2px;
+    width:0; height:1px; background:var(--accent);
+    transition:width .28s ease;
+  }
+  .nav-link:hover{ color:var(--ink); }
+  .nav-link:hover::after{ width:100%; }
+
+  /* ---------- masthead / hero ---------- */
+  .masthead{ padding:96px 0 64px; }
+  .masthead .dateline{ margin-bottom:26px; }
+  .masthead h1{
+    font-family:"Fraunces", serif;
+    font-weight:900;
+    font-size:clamp(52px, 11vw, 118px);
+    line-height:0.92;
+    letter-spacing:-0.02em;
+    margin:0 0 22px;
+  }
+  .masthead .role{
+    font-family:"Fraunces", serif;
+    font-style:italic; font-weight:400;
+    font-size:clamp(22px, 3.4vw, 30px);
+    color:var(--accent);
+    margin:0 0 20px;
+  }
+  .masthead .tagline{
+    max-width:52ch; color:var(--muted);
+    font-size:20px; margin:0;
+  }
+  .rule{ height:1px; background:var(--line); border:0; margin:0; }
+
+  /* ---------- section frame ---------- */
+  section{ padding:70px 0; border-top:1px solid var(--line); }
+  .section-head{
+    display:flex; align-items:baseline; gap:16px; margin-bottom:38px;
+  }
+  .section-head h2{
+    font-family:"Fraunces", serif; font-weight:600;
+    font-size:clamp(28px, 4.6vw, 40px);
+    letter-spacing:-0.01em; margin:0;
+  }
+
+  /* ---------- about + drop cap (the signature) ---------- */
+  .about p{ max-width:62ch; font-size:20px; }
+  .about p:first-of-type{ margin-top:0; }
+  .about p:first-of-type::first-letter{
+    font-family:"Fraunces", serif;
+    font-weight:900;
+    float:left;
+    font-size:5.4em;
+    line-height:0.72;
+    padding:8px 14px 0 0;
+    color:var(--accent);
+  }
+
+  /* ---------- selected work ---------- */
+  .work-item{
+    display:block;
+    padding:24px 0;
+    border-bottom:1px solid var(--line);
+    color:var(--ink);
+  }
+  .work-item:first-of-type{ border-top:1px solid var(--line); }
+  .work-top{
+    display:flex; align-items:baseline; justify-content:space-between;
+    gap:18px; flex-wrap:wrap;
+  }
+  .work-item h3{
+    font-family:"Fraunces", serif; font-weight:600;
+    font-size:26px; margin:0; transition:color .2s ease;
+  }
+  .work-item .meta{ white-space:nowrap; }
+  .work-item p{
+    margin:8px 0 0; color:var(--muted); max-width:60ch; font-size:18px;
+  }
+  .work-item .go{
+    font-family:"Space Mono", monospace; font-size:12px;
+    letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--accent); opacity:0;
+    transform:translateX(-4px);
+    transition:opacity .24s ease, transform .24s ease;
+    display:inline-block; margin-top:10px;
+  }
+  .work-item:hover h3{ color:var(--accent); }
+  .work-item:hover .go,
+  .work-item:focus-visible .go{ opacity:1; transform:translateX(0); }
+
+  /* ---------- experience timeline ---------- */
+  .xp-row{
+    display:grid;
+    grid-template-columns:130px 1fr;
+    gap:28px;
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .xp-row:first-of-type{ border-top:1px solid var(--line); }
+  .xp-when{ padding-top:5px; }
+  .xp-what h3{
+    font-family:"Fraunces", serif; font-weight:600;
+    font-size:22px; margin:0 0 2px;
+  }
+  .xp-what .org{ color:var(--accent); font-style:italic; }
+  .xp-what p{ margin:8px 0 0; color:var(--muted); font-size:17px; max-width:56ch; }
+
+  /* ---------- footer / contact ---------- */
+  footer{ padding:80px 0 64px; border-top:1px solid var(--line); }
+  footer h2{
+    font-family:"Fraunces", serif; font-weight:600;
+    font-size:clamp(30px, 6vw, 52px); margin:0 0 8px; letter-spacing:-0.01em;
+  }
+  footer .say{ color:var(--muted); max-width:48ch; margin:0 0 30px; font-size:20px; }
+  .contacts{ display:flex; flex-wrap:wrap; gap:14px 30px; }
+  .contacts a{
+    font-family:"Space Mono", monospace; font-size:13px;
+    letter-spacing:0.06em; color:var(--ink);
+    border-bottom:1px solid var(--line); padding-bottom:3px;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .contacts a:hover{ color:var(--accent); border-color:var(--accent); }
+  .colophon{ margin-top:56px; }
+
+  /* ---------- load-in motion ---------- */
+  .rise{ opacity:0; transform:translateY(14px); animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards; }
+  .rise.d1{ animation-delay:.08s; }
+  .rise.d2{ animation-delay:.16s; }
+  .rise.d3{ animation-delay:.24s; }
+  @keyframes rise{ to{ opacity:1; transform:translateY(0); } }
+
+  @media (max-width:620px){
+    body{ font-size:18px; }
+    .nav{ display:none; }              /* keep the bar clean on phones */
+    .masthead{ padding:64px 0 44px; }
+    .xp-row{ grid-template-columns:1fr; gap:6px; }
+    .xp-when{ padding-top:0; }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{ scroll-behavior:auto; }
+    .rise{ animation:none; opacity:1; transform:none; }
+    *{ transition:none !important; }
+  }
+</style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       TOP BAR  — EDIT: your initials/name + section anchors
+       ============================================================ -->
+  <div class="topbar">
+    <div class="wrap">
+      <span class="mark">Jordan Ellis</span>
+      <nav class="nav" aria-label="Sections">
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#work">Work</a>
+        <a class="nav-link" href="#experience">Experience</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MASTHEAD  — EDIT: name, role, one-line tagline, dateline
+       ============================================================ -->
+  <header class="masthead">
+    <div class="wrap">
+      <div class="label dateline rise">Salt Lake City &nbsp;·&nbsp; Est. 2016 &nbsp;·&nbsp; Available for work</div>
+      <h1 class="rise d1">Jordan Ellis</h1>
+      <p class="role rise d1">Product designer &amp; occasional writer</p>
+      <p class="tagline rise d2">I design calm, legible tools for writers and independent makers — the kind of software that gets out of your way and stays out of it.</p>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       ABOUT  — EDIT: your bio. First letter becomes the drop cap.
+       ============================================================ -->
+  <section id="about" class="about">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">01</span>
+        <h2>About</h2>
+      </div>
+      <p>Ten years ago I was fixing typography on other people's blogs for free. Since then I've shipped design for a reading app, two note-taking tools, and a small pile of side projects that mostly taught me what not to build. I care about the unglamorous parts — empty states, error copy, the moment a new person opens the thing for the first time.</p>
+      <p>These days I work with early-stage teams who want their product to feel considered without feeling precious. When I'm not doing that, I'm usually writing, walking, or arguing with myself about serif choices.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SELECTED WORK  — EDIT/DUPLICATE each <a class="work-item">.
+       Point href at the live project, case study, or GitHub repo.
+       ============================================================ -->
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">02</span>
+        <h2>Selected work</h2>
+      </div>
+
+      <a class="work-item" href="#">
+        <div class="work-top">
+          <h3>Margin — a reading app</h3>
+          <span class="label meta">2024 · Lead design</span>
+        </div>
+        <p>A distraction-free reader with annotations that sync to plain text. Took it from sketch to 40k users.</p>
+        <span class="go">View project →</span>
+      </a>
+
+      <a class="work-item" href="#">
+        <div class="work-top">
+          <h3>Fieldnote</h3>
+          <span class="label meta">2022 · Design &amp; front-end</span>
+        </div>
+        <p>Note-taking for researchers. Designed the capture flow and built the marketing site.</p>
+        <span class="go">View project →</span>
+      </a>
+
+      <a class="work-item" href="#">
+        <div class="work-top">
+          <h3>Type samples</h3>
+          <span class="label meta">Ongoing · Personal</span>
+        </div>
+        <p>An open collection of editorial type pairings I keep for reference. Small, opinionated, updated when the mood strikes.</p>
+        <span class="go">View project →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       EXPERIENCE  — EDIT/DUPLICATE each .xp-row (newest first).
+       ============================================================ -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">03</span>
+        <h2>Experience</h2>
+      </div>
+
+      <div class="xp-row">
+        <div class="xp-when label">2022 — Now</div>
+        <div class="xp-what">
+          <h3>Senior Product Designer, <span class="org">Margin</span></h3>
+          <p>Own end-to-end design across web and iOS. Set up the design system and the weekly critique that keeps it honest.</p>
+        </div>
+      </div>
+
+      <div class="xp-row">
+        <div class="xp-when label">2019 — 2022</div>
+        <div class="xp-what">
+          <h3>Product Designer, <span class="org">Fieldnote</span></h3>
+          <p>Second designer on a team of twelve. Led the onboarding redesign that cut first-week drop-off in half.</p>
+        </div>
+      </div>
+
+      <div class="xp-row">
+        <div class="xp-when label">2016 — 2019</div>
+        <div class="xp-what">
+          <h3>Freelance, <span class="org">Independent</span></h3>
+          <p>Design and front-end for small publishers and writers. Learned to scope, invoice, and say no.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT  — EDIT: email + social links. Delete any you skip.
+       ============================================================ -->
+  <footer id="contact">
+    <div class="wrap">
+      <h2>Let's talk.</h2>
+      <p class="say">Open to freelance projects and the occasional full-time conversation. The fastest way to reach me is email.</p>
+      <div class="contacts">
+        <a href="mailto:you@example.com">you@example.com</a>
+        <a href="https://github.com/yourname">GitHub</a>
+        <a href="https://linkedin.com/in/yourname">LinkedIn</a>
+        <a href="https://twitter.com/yourname">Twitter / X</a>
+      </div>
+      <div class="colophon label">© 2026 Jordan Ellis · Set in Fraunces &amp; Newsreader</div>
+    </div>
+  </footer>
+
+</body>
+</html>
